@@ -4,24 +4,52 @@ Firmware update
 ```
 sudo apt update
 sudo apt full-upgrade
+sudo rpi-eeprom-update
 sudo reboot
 
 sudo rpi-eeprom-config -e
 Add the configuration SDRAM_BANKLOW=1
 ```
 
+Overclock (Conservative)
+```
+sudo nano /boot/firmware/config.txt
+[pi5]
+arm_freq=2700         # CPU clock in MHz (e.g., 3000 = 3.0GHz)
+gpu_freq=600          # GPU frequency
+sdram_freq=2400       # SDRAM frequency (safe max: 2500–2750)
+over_voltage=3        # +60mV (range: 0–15 for safety)
+```
+
+Overclock (Moderate)
+```
+sudo nano /boot/firmware/config.txt
+[pi5]
+arm_freq=3000         # CPU clock in MHz (e.g., 3000 = 3.0GHz)
+gpu_freq=750          # GPU frequency
+sdram_freq=2500       # SDRAM frequency (safe max: 2500–2750)
+over_voltage=6        # +60mV (range: 0–15 for safety)
+```
+
+Monitor
+```
+watch -n 1 '
+echo "CPU:   $(vcgencmd measure_clock arm)"
+echo "GPU:   $(vcgencmd measure_clock v3d)"
+echo "SDRAM: $(vcgencmd measure_clock sdram_c)"
+echo "TEMP:  $(vcgencmd measure_temp)"
+echo "THTLD: $(vcgencmd get_throttled)"
+'
+```
+
 For booting from USB SSD NVME using any OS, edit config.txt
 ```
-# will force the Pi5 to allow full current to USB devices and disable the confimr boot from USB prompt
-usb_max_current_enable=1
-
-# Skip check for The installed operating system (OS) does not indicate support for Raspberry Pi 5
-os_check=0
+usb_max_current_enable=1 # will force the Pi5 to allow full current to USB devices and disable the confimr boot from USB prompt
+os_check=0 # Skip check for The installed operating system (OS) does not indicate support for Raspberry Pi 5
+arm_boost=1           # Enable turbo mode (auto-boost when needed)
 ```
 
 # Recommended OS
 1. Raspberry Pi OS
-2. Ubuntu 22.0
-3. KDE Plasma
-4. Batocera
-5. Recalbox
+2. Batocera
+3. Recalbox
