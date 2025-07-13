@@ -14,10 +14,10 @@ cmake -S . -B build \
 	-DSDL_ALSA_SHARED=OFF \
 	-DSDL_LIBURING=ON \
 	-DCMAKE_INSTALL_PREFIX=$HOME/usr
-cmake --build build
+cmake --build build -- -j8
 cmake --install build
 
 git clone https://github.com/love2d/love.git
 cmake -B build -S. -DCMAKE_PREFIX_PATH=$HOME/usr --install-prefix=$HOME/usr
-cmake --build build
+cmake --build build -- -j8
 cmake --install build
