@@ -3,7 +3,7 @@ set -e
 
 # === Configuration ===
 PREFIX="$HOME/usr"
-BUILD_DIR="$HOME/build-pcmanfm"
+BUILD_DIR="$HOME/Projects"
 LIBFM_REPO="https://github.com/lxde/libfm.git"
 PCMANFM_REPO="https://github.com/lxde/pcmanfm.git"
 
