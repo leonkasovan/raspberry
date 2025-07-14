@@ -2,7 +2,7 @@
 set -e
 
 # === Configuration ===
-PREFIX="$HOME/.local/pcmanfm-gtk3"
+PREFIX="$HOME/usr"
 BUILD_DIR="$HOME/build-pcmanfm"
 LIBFM_REPO="https://github.com/lxde/libfm.git"
 PCMANFM_REPO="https://github.com/lxde/pcmanfm.git"
