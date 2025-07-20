@@ -7,7 +7,9 @@ mkdir -p $HOME/usr
 
 git clone https://github.com/libsdl-org/SDL SDL3
 cd SDL3
+mkdir -p build
 cmake -S . -B build \
+	-DCMAKE_BUILD_TYPE=Release \
 	-DSDL_STATIC=ON \
 	-DSDL_WAYLAND_LIBDECOR=OFF \
 	-DSDL_WAYLAND_LIBDECOR_SHARED=OFF \
