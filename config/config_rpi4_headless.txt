@@ -1,4 +1,5 @@
-# Optimize config for headless Raspberry Pi
+# Optimize config for headless Raspberry Pi 4
+# Put this file config.txt in /boot/firmware/config.txt
 # For more options and information see
 # http://rptl.io/configtxt
 # Some settings may impact device functionality. See link above for details
