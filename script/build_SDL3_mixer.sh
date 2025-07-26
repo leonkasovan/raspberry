@@ -11,3 +11,11 @@ cmake -S . -B build \
 	-DCMAKE_INSTALL_PREFIX=$HOME/usr
 cmake --build build -- -j8
 cmake --install build
+
+echo "Adding \"$HOME/usr/lib/pkgconfig\" to PKG_CONFIG_PATH ... [done]"
+LINE='export PKG_CONFIG_PATH=$HOME/usr/lib/pkgconfig:$PKG_CONFIG_PATH'
+FILE="$HOME/.profile"
+# Check if the line is already present
+grep -qxF "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
+echo "Usage:"
+echo "  pkg-config sdl3-mixer --libs --cflags"
