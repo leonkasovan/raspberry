@@ -62,5 +62,5 @@ System Options -> Auto Login ->
 
 # Recommended OS
 1. Raspberry Pi OS
-2. Batocera
+2. DietPi
 3. Recalbox
